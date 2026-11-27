@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -119,22 +120,38 @@
                     </div>
                 </div>
 
-                <form id="commentForm">
+                <!-- Formulario conectado con PHP -->
+                <form id="commentForm" action="php/guardar_comentario.php" method="POST">
+
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Tu nombre</label>
-                        <input type="text" class="form-control" id="nombre"
-                            placeholder="¿Cómo te llamas?" required>
+                        <input type="text"
+                            class="form-control"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="¿Cómo te llamas?"
+                            maxlength="100"
+                            required>
                     </div>
 
                     <div class="mb-3">
                         <label for="comentario" class="form-label">Tu opinión</label>
-                        <textarea class="form-control" id="comentario" rows="4"
-                            placeholder="Cuéntanos qué está pasando..." required></textarea>
+                        <textarea class="form-control"
+                            id="comentario"
+                            name="comentario"
+                            rows="4"
+                            maxlength="2000"
+                            placeholder="Cuéntanos qué está pasando..."
+                            required></textarea>
                     </div>
+
+                    <!-- Mensaje de éxito o error -->
+                    <div id="formMessage" class="mb-3" role="status"></div>
 
                     <button type="submit" class="btn btn-pop btn-publish">
                         Publicar comentario <i class="bi bi-send-fill"></i>
                     </button>
+
                 </form>
             </div>
         </div>
@@ -149,78 +166,11 @@
                 <p>Opiniones, conversaciones y mucho entretenimiento.</p>
             </div>
 
+            <!-- Los comentarios se cargarán desde MySQL -->
             <div class="row g-4" id="commentsContainer">
-
-                <!-- Comentario de ejemplo 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <article class="comment-card">
-                        <div class="comment-user">
-                            <div class="user-avatar avatar-pink">M</div>
-                            <div>
-                                <h5>María</h5>
-                                <span>Comentario de ejemplo</span>
-                            </div>
-                        </div>
-
-                        <p class="comment-text">
-                            ¡Esta página promete! Aquí podremos hablar de todo lo que pasa
-                            en el mundo del entretenimiento.
-                        </p>
-
-                        <div class="comment-footer">
-                            <span><i class="bi bi-heart-fill"></i> Opinión</span>
-                            <span><i class="bi bi-chat-dots"></i> Comunidad</span>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Comentario de ejemplo 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <article class="comment-card">
-                        <div class="comment-user">
-                            <div class="user-avatar avatar-purple">J</div>
-                            <div>
-                                <h5>José</h5>
-                                <span>Comentario de ejemplo</span>
-                            </div>
-                        </div>
-
-                        <p class="comment-text">
-                            Me encanta estar al tanto de las tendencias y compartir
-                            lo que pienso sobre ellas.
-                        </p>
-
-                        <div class="comment-footer">
-                            <span><i class="bi bi-heart-fill"></i> Opinión</span>
-                            <span><i class="bi bi-chat-dots"></i> Comunidad</span>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Comentario de ejemplo 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <article class="comment-card">
-                        <div class="comment-user">
-                            <div class="user-avatar avatar-yellow">A</div>
-                            <div>
-                                <h5>Ana</h5>
-                                <span>Comentario de ejemplo</span>
-                            </div>
-                        </div>
-
-                        <p class="comment-text">
-                            Un espacio para divertirnos, opinar y conocer lo que
-                            piensa la comunidad sobre la farándula.
-                        </p>
-
-                        <div class="comment-footer">
-                            <span><i class="bi bi-heart-fill"></i> Opinión</span>
-                            <span><i class="bi bi-chat-dots"></i> Comunidad</span>
-                        </div>
-                    </article>
-                </div>
-
+                <!-- JavaScript insertará aquí las tarjetas de comentarios -->
             </div>
+
         </div>
     </section>
 
@@ -239,6 +189,9 @@
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript para gestionar los comentarios -->
+    <script src="js/comentarios.js"></script>
 
 </body>
 </html>
